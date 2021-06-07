@@ -1,0 +1,34 @@
+.w-300 {
+    max-width: 365px;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 2rem;
+}
+
+.countContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.center {
+    text-align: center;
+}
+
+.p-x-1 {
+    padding: 0 1rem;
+}
+
+.m-x-1 {
+    margin: 0 1rem;
+}
+
+.m-y-1 {
+    margin: 1rem 0;
+}
+
