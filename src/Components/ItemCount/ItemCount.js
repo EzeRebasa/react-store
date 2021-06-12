@@ -7,12 +7,11 @@ import { AddShoppingCart } from '@material-ui/icons';
 import './ItemCount.css';
 
 
-const ItemCount = ({ product }) => {
+const ItemCount = ({ stock }) => {
 
-    const { stock, initial, onAdd } = product;
     // States
-    const [cant, setCant] = useState(initial);
-
+    const [cant, setCant] = useState(1);
+    
     // handlers
     const handleAdd = (e) => {
         if (stock > cant) {
@@ -23,7 +22,6 @@ const ItemCount = ({ product }) => {
     }
 
     const handleSubtract = (e) => {
-        console.log('Cant', cant);
         if (cant > 1) {
             setCant(cant - 1);
         }
@@ -33,14 +31,22 @@ const ItemCount = ({ product }) => {
     }
 
     const handleChange = (e) => {
-        console.log(e.target);
+        // Parseo a number el valor ingresado y evito el NaN con el || 0, eso rompía el input y no dejaba usar los buttons
+        const value = +e.target.value || 0;
+        if(value === 0) {
+            setCant(1);
+        }else if( value > stock){
+            alert('No hay más stock')
+        }else {
+            setCant(value);
+        }   
     }
 
     return (
         <>
-            <Paper elevation={3} className="flex-container w-300">
+            {/* <Paper elevation={3} className="flex-container w-300">
                 <h1> Producto </h1>
-                <Box className="countContainer m-y-1">
+                <Box className="countContainer m-y-1"> */}
                     <Button
                         size="small"
                         variant="contained"
@@ -48,11 +54,12 @@ const ItemCount = ({ product }) => {
                         onClick={handleSubtract}
                     ><RemoveIcon /></Button>
                     <TextField
+                        id='inputCount'
                         inputProps={{ style: {textAlign: 'center'} }}
                         size="small"
                         variant="outlined"
                         value={cant}
-                        onChange={handleChange} // No estaria funcionando
+                        onChange={handleChange} 
                     />
                     <Button
                         variant="contained"
@@ -61,15 +68,14 @@ const ItemCount = ({ product }) => {
                         size="small"
 
                     ><AddIcon /></Button>
-                </Box>
-                
+                {/* </Box>       
                 <Button
                     variant="contained"
                     size="large"
                     color="primary"
                     startIcon={<AddShoppingCart />}
-                > Agregar a carrito </Button>
-            </Paper>
+                > Agregar a carrito </Button> */}
+            {/* </Paper> */}
 
         </>
     )
