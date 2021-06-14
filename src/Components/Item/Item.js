@@ -27,10 +27,10 @@ const Item = ({product}) => {
               <Typography gutterBottom variant="h5" component="h2">
                 {name}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography variant="body2" color="textSecondary" component='p'>
                 {description}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography variant="body2" color="textSecondary" component='span'>
                 {price}
               </Typography>
             </CardContent>
