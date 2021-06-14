@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import MyApp from './MyApp';
 
 
-
 const divRoot = document.querySelector('#root');
 
-ReactDOM.render( <MyApp />, divRoot);
+
+
+ReactDOM.render(<MyApp />, divRoot);
 
