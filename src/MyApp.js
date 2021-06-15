@@ -22,10 +22,10 @@ const MyApp = () => {
         setIsLoadingProducts(true);
         try {
             const response = await axios.get(`${api}/products`);
-            setIsLoadingProducts(true);
+            setIsLoadingProducts(false);
             return response?.data;
         } catch (error) {
-            setIsLoadingProducts(true);
+            setIsLoadingProducts(false);
             console.error(error);
         }
     }
@@ -33,7 +33,8 @@ const MyApp = () => {
     return (
         <ProductsContext.Provider value={{
             products,
-            setProducts
+            setProducts,
+            isLoadingProducts
             }}>
             <NavBar />
             <TabsRouter />
